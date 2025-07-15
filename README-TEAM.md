@@ -4,7 +4,14 @@
 
 ### 1. Installation automatique (Recommandé)
 ```bash
+# Si le repo est public :
 curl -sSL https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/install.sh | bash
+
+# Si le repo est privé (accès requis) :
+git clone https://github.com/heavenconseil/hds-react-ui-packages.git /tmp/hds-ui-install && \
+cd /tmp/hds-ui-install && \
+bash install.sh && \
+cd ~ && rm -rf /tmp/hds-ui-install
 ```
 
 ### 2. Vérifier l'installation
