@@ -2,19 +2,29 @@
 
 ## 🚀 Installation
 
-### 1. Installer le CLI depuis GitHub
+### 1. Installation automatique (Recommandé)
 ```bash
-# Avec npm
-npm install -g git+https://github.com/heavenconseil/hds-react-ui-packages.git#main:cli
-
-# Ou avec pnpm
-pnpm add -g git+https://github.com/heavenconseil/hds-react-ui-packages.git#main:cli
+curl -sSL https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/install.sh | bash
 ```
 
 ### 2. Vérifier l'installation
 ```bash
 hds-ui --help
 ```
+
+## 🔄 Mise à jour
+
+### Option 1: Commande update (Simple)
+```bash
+hds-ui update
+```
+
+### Option 2: Réinstallation complète
+```bash
+curl -sSL https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/install.sh | bash
+```
+
+> 💡 **Le CLI vérifie automatiquement les mises à jour** et vous avertit quand une nouvelle version est disponible.
 
 ### 2. Configuration (optionnelle)
 
