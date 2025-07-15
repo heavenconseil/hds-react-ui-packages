@@ -1,0 +1,34 @@
+{
+  "name": "hds-ui",
+  "version": "1.0.0",
+  "components": {
+    "cta": {
+      "name": "cta",
+      "type": "components:ui",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "devDependencies": [],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "name": "cta.tsx",
+          "url": "https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/cta.tsx"
+        }
+      ]
+    }
+  },
+  "utils": {
+    "utils": {
+      "name": "utils",
+      "type": "components:lib",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "devDependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "name": "utils.ts",
+          "url": "https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/lib/utils.ts"
+        }
+      ]
+    }
+  }
+}

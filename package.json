@@ -17,7 +17,10 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "publish:package": "pnpm build && pnpm publish"
+    "publish:package": "pnpm build && pnpm publish",
+    "sync-registry": "node scripts/sync-registry.js",
+    "build:cli": "cd cli && pnpm build",
+    "publish:cli": "cd cli && pnpm publish"
   },
   "keywords": [
     "react",
@@ -42,6 +45,7 @@
     "@storybook/react": "^9.0.15",
     "@storybook/react-vite": "^9.0.15",
     "@tailwindcss/cli": "^4.1.11",
+    "@tailwindcss/postcss": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",
