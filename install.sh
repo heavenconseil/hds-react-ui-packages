@@ -70,19 +70,50 @@ if ! command -v hds-ui &> /dev/null; then
     
     # Obtenir le chemin du bin pnpm
     PNPM_GLOBAL_BIN=""
-    if pnpm root -g &> /dev/null; then
-        PNPM_GLOBAL_BIN="$(dirname $(which pnpm))"
-    else
-        PNPM_GLOBAL_BIN="$HOME/.local/share/pnpm"
+    if command -v pnpm &> /dev/null; then
+        # Essayer de trouver le chemin pnpm
+        PNPM_ROOT=$(pnpm root -g 2>/dev/null || echo "")
+        if [ -n "$PNPM_ROOT" ]; then
+            PNPM_GLOBAL_BIN="$(dirname "$PNPM_ROOT")/bin"
+        else
+            # Fallback vers les chemins standards
+            if [ -d "$HOME/Library/pnpm" ]; then
+                PNPM_GLOBAL_BIN="$HOME/Library/pnpm"
+            elif [ -d "$HOME/.local/share/pnpm" ]; then
+                PNPM_GLOBAL_BIN="$HOME/.local/share/pnpm"
+            fi
+        fi
+    fi
+    
+    # Si on n'a toujours pas trouvé, utiliser le chemin où pnpm est installé
+    if [ -z "$PNPM_GLOBAL_BIN" ] && command -v pnpm &> /dev/null; then
+        PNPM_GLOBAL_BIN="$(dirname "$(which pnpm)")"
     fi
     
     # Ajouter au shell approprié
-    if [[ "$SHELL" == *"zsh"* ]]; then
-        echo "export PATH=\"$PNPM_GLOBAL_BIN:\$PATH\"" >> ~/.zshrc
-        echo "📝 Ajouté au ~/.zshrc. Rechargez avec: source ~/.zshrc"
-    else
-        echo "export PATH=\"$PNPM_GLOBAL_BIN:\$PATH\"" >> ~/.bashrc
-        echo "📝 Ajouté au ~/.bashrc. Rechargez avec: source ~/.bashrc"
+    if [ -n "$PNPM_GLOBAL_BIN" ]; then
+        if [[ "$SHELL" == *"zsh"* ]]; then
+            if ! grep -q "PNPM_HOME" ~/.zshrc 2>/dev/null; then
+                echo "export PATH=\"$PNPM_GLOBAL_BIN:\$PATH\"" >> ~/.zshrc
+                echo "📝 Ajouté au ~/.zshrc. Rechargez avec: source ~/.zshrc"
+            fi
+        else
+            if ! grep -q "PNPM_HOME" ~/.bashrc 2>/dev/null; then
+                echo "export PATH=\"$PNPM_GLOBAL_BIN:\$PATH\"" >> ~/.bashrc
+                echo "📝 Ajouté au ~/.bashrc. Rechargez avec: source ~/.bashrc"
+            fi
+        fi
+        
+        # Essayer de rendre le CLI accessible immédiatement
+        export PATH="$PNPM_GLOBAL_BIN:$PATH"
+    fi
+    
+    # Vérification finale
+    if ! command -v hds-ui &> /dev/null; then
+        echo "⚠️  Installation terminée mais CLI non accessible automatiquement."
+        echo "🔧 Rechargez votre shell avec: source ~/.bashrc (ou ~/.zshrc)"
+        echo "📍 Ou ajoutez manuellement à votre PATH :"
+        echo "   export PATH=\"$PNPM_GLOBAL_BIN:\$PATH\""
     fi
 fi
 
