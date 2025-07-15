@@ -19,6 +19,25 @@ cd ~ && rm -rf /tmp/hds-ui-install
 hds-ui --help
 ```
 
+> 🔧 **Si la commande `hds-ui` n'est pas trouvée** :
+> 
+> **Option 1 (Recommandé) :** Configurer pnpm automatiquement
+> ```bash
+> pnpm setup --force
+> source ~/.bashrc  # ou source ~/.zshrc pour zsh
+> ```
+> 
+> **Option 2 :** Ajouter manuellement au PATH
+> ```bash
+> # Pour bash
+> echo 'export PATH="$HOME/.local/share/pnpm:$PATH"' >> ~/.bashrc
+> source ~/.bashrc
+> 
+> # Pour zsh  
+> echo 'export PATH="$HOME/.local/share/pnpm:$PATH"' >> ~/.zshrc
+> source ~/.zshrc
+> ```
+
 ## 🔄 Mise à jour
 
 ### Option 1: Commande update (Simple)

@@ -2,7 +2,6 @@
   "name": "@heavenconseil/hds-cli",
   "version": "1.0.0",
   "description": "CLI pour installer les composants HDS UI",
-  "type": "module",
   "bin": {
     "hds-ui": "./dist/index.js"
   },
