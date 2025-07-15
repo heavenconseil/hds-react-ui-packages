@@ -2,6 +2,26 @@
 
 Une bibliothèque de composants UI moderne pour Heaven Conseil, construite avec React 19, TypeScript et Tailwind CSS 4.
 
+## 🚀 Installation rapide avec CLI (Équipe Heaven Conseil)
+
+Pour les membres de l'équipe, utilisez notre CLI pour ajouter rapidement des composants :
+
+```bash
+# Installation du CLI
+npm install -g git+https://github.com/heavenconseil/hds-react-ui-packages.git#main:cli
+
+# Ou avec le script d'installation
+curl -sSL https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/install.sh | bash
+
+# Utilisation
+hds-ui init
+hds-ui add cta
+```
+
+📖 **[Guide complet pour l'équipe →](./README-TEAM.md)**
+
+---
+
 ## Installation
 
 ```bash

@@ -2,9 +2,18 @@
 
 ## 🚀 Installation
 
-### 1. Installer le CLI
+### 1. Installer le CLI depuis GitHub
 ```bash
-npm install -g @heavenconseil/hds-cli
+# Avec npm
+npm install -g git+https://github.com/heavenconseil/hds-react-ui-packages.git#main:cli
+
+# Ou avec pnpm
+pnpm add -g git+https://github.com/heavenconseil/hds-react-ui-packages.git#main:cli
+```
+
+### 2. Vérifier l'installation
+```bash
+hds-ui --help
 ```
 
 ### 2. Configuration (optionnelle)
