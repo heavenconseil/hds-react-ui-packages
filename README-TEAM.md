@@ -106,6 +106,18 @@ export function MyComponent() {
 
 ## 🆘 Dépannage
 
+### CLI non trouvé après installation
+```bash
+# Configurer pnpm et réinstaller
+pnpm setup --force
+source ~/.bashrc  # ou source ~/.zshrc
+# Puis réinstaller le CLI
+git clone https://github.com/heavenconseil/hds-react-ui-packages.git /tmp/hds-ui-install && \
+cd /tmp/hds-ui-install && \
+bash install.sh && \
+cd ~ && rm -rf /tmp/hds-ui-install
+```
+
 ### Erreur "Component not found"
 - Vérifiez que le repo `heavenconseil/hds-react-ui-packages` est accessible
 - Vérifiez que le composant existe dans le registry
