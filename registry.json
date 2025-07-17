@@ -1,0 +1,14 @@
+[
+  {
+    "name": "cta",
+    "type": "registry:ui",
+    "description": "Bouton CTA avec variants et états",
+    "url": "https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/cta.json"
+  },
+  {
+    "name": "utils",
+    "type": "registry:lib",
+    "description": "Utilitaires pour la gestion des classes CSS",
+    "url": "https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/lib/utils.json"
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "cta",
+  "type": "registry:ui",
+  "description": "A versatile CTA button component with multiple variants, sizes, and loading states",
+  "dependencies": [
+    "class-variance-authority",
+    "clsx"
+  ],
+  "registryDependencies": [
+    "https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/lib/utils.json"
+  ],
+  "files": [
+    {
+      "path": "ui/cta.tsx",
+      "type": "registry:ui"
+    }
+  ],
+  "meta": {
+    "tags": ["button", "cta", "call-to-action"]
+  }
+}
