@@ -30,19 +30,19 @@ const ctaVariants = cva(
 export interface CTAProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ctaVariants> {
-  loading?: boolean
+  isLoading?: boolean
 }
 
 const CTA = React.forwardRef<HTMLButtonElement, CTAProps>(
-  ({ className, variant, size, loading, children, ...props }, ref) => {
+  ({ className, variant, size, isLoading, children, ...props }, ref) => {
     return (
       <button
         className={cn(ctaVariants({ variant, size, className }))}
         ref={ref}
-        disabled={loading || props.disabled}
+        disabled={isLoading || props.disabled}
         {...props}
       >
-        {loading && (
+        {isLoading && (
           <svg
             className="mr-2 h-4 w-4 animate-spin"
             xmlns="http://www.w3.org/2000/svg"
