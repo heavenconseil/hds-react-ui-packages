@@ -14,17 +14,13 @@ pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-r
 
 ```tsx
 import { CTA } from '@/components/ui/cta'
-import { Picto } from '@/components/ui/picto'
 
 <CTA variant="primary">Mon bouton</CTA>
-<Picto name="heart" size="medium" />
 ```
 
 ## 🔧 Composants disponibles
 
 **CTA :** `pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/cta.json`
-
-**Picto :** `pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/picto.json`
 
 ## 🎨 Variants du CTA
 
@@ -41,23 +37,6 @@ import { Picto } from '@/components/ui/picto'
 
 <CTA href="/path">Lien</CTA>
 <CTA loading>Chargement...</CTA>
-```
-
-## 🎯 Icônes Picto disponibles
-
-```tsx
-<Picto name="check" size="medium" />
-<Picto name="close" size="medium" />
-<Picto name="arrow-left" size="medium" />
-<Picto name="arrow-right" size="medium" />
-<Picto name="heart" size="medium" />
-<Picto name="star" size="medium" />
-<Picto name="user" size="medium" />
-<Picto name="settings" size="medium" />
-<Picto name="search" size="medium" />
-<Picto name="plus" size="medium" />
-
-// Tailles disponibles: 'small' | 'medium' | 'large' | 'selecttabs'
 ```
 
 ## 🏗️ Développement
