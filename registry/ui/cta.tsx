@@ -1,121 +1,74 @@
-import React, { forwardRef, ForwardRefExoticComponent, ReactNode, RefAttributes, ButtonHTMLAttributes } from 'react'
-import { cn } from '@/lib/utils'
+import * as React from "react"
+import { cva, type VariantProps } from "class-variance-authority"
 
-export interface CTAProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'title'> {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
-  size?: 'small' | 'medium' | 'large'
-  href?: string
-  target?: string
-  onClick?: (event?: React.MouseEvent<HTMLButtonElement>) => void
-  startIcon?: ReactNode
-  endIcon?: ReactNode
-  children?: ReactNode
-  disabled?: boolean
-  expand?: boolean
+import { cn } from "@/lib/utils"
+
+const ctaVariants = cva(
+  "inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        primary: "bg-primary text-primary-foreground hover:bg-primary/90",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+      },
+      size: {
+        sm: "h-9 px-3",
+        default: "h-10 px-4 py-2",
+        lg: "h-11 px-8",
+      },
+    },
+    defaultVariants: {
+      variant: "primary",
+      size: "default",
+    },
+  }
+)
+
+export interface CTAProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof ctaVariants> {
   loading?: boolean
 }
 
-const CTA = forwardRef<HTMLButtonElement, CTAProps>(
-  (
-    {
-      variant = 'primary',
-      size = 'medium',
-      href,
-      target = '_self',
-      onClick,
-      children,
-      className = '',
-      startIcon,
-      endIcon,
-      disabled = false,
-      expand = false,
-      loading = false,
-      ...props
-    },
-    ref
-  ) => {
-    const baseStyles = cn(
-      'inline-flex items-center justify-center rounded-md font-medium',
-      'transition-colors duration-200 ease-in-out',
-      'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
-      'disabled:pointer-events-none disabled:opacity-50',
-      'whitespace-nowrap cursor-pointer'
-    )
-
-    const sizeStyles = {
-      small: 'h-8 px-3 text-sm gap-1.5',
-      medium: 'h-10 px-4 text-sm gap-2',
-      large: 'h-12 px-6 text-base gap-2'
-    }
-
-    const variantStyles = {
-      primary: cn(
-        'bg-primary text-primary-foreground hover:bg-primary/90',
-        'focus-visible:ring-primary'
-      ),
-      secondary: cn(
-        'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        'focus-visible:ring-secondary'
-      ),
-      outline: cn(
-        'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-        'focus-visible:ring-ring'
-      ),
-      ghost: cn(
-        'hover:bg-accent hover:text-accent-foreground',
-        'focus-visible:ring-ring'
-      ),
-      destructive: cn(
-        'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        'focus-visible:ring-destructive'
-      )
-    }
-
-    const buttonClasses = cn(
-      baseStyles,
-      sizeStyles[size],
-      variantStyles[variant],
-      expand && 'w-full',
-      className
-    )
-
-    const content = (
-      <>
-        {loading && <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-current" />}
-        {!loading && startIcon && startIcon}
-        {children}
-        {!loading && endIcon && endIcon}
-      </>
-    )
-
-    if (href && !disabled) {
-      return (
-        <a
-          href={href}
-          target={target}
-          className={buttonClasses}
-          onClick={onClick as any}
-          {...(props as any)}
-        >
-          {content}
-        </a>
-      )
-    }
-
+const CTA = React.forwardRef<HTMLButtonElement, CTAProps>(
+  ({ className, variant, size, loading, children, ...props }, ref) => {
     return (
       <button
+        className={cn(ctaVariants({ variant, size, className }))}
         ref={ref}
-        onClick={disabled || loading ? undefined : onClick}
-        className={buttonClasses}
-        disabled={disabled || loading}
+        disabled={loading || props.disabled}
         {...props}
       >
-        {content}
+        {loading && (
+          <svg
+            className="mr-2 h-4 w-4 animate-spin"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              className="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              strokeWidth="4"
+            />
+            <path
+              className="opacity-75"
+              fill="currentColor"
+              d="m4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            />
+          </svg>
+        )}
+        {children}
       </button>
     )
   }
 )
+CTA.displayName = "CTA"
 
-CTA.displayName = 'CTA'
-
-export { CTA }
+export { CTA, ctaVariants }

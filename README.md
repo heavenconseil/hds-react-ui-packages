@@ -2,12 +2,20 @@
 
 Une bibliothèque de composants React moderne, compatible avec shadcn/ui.
 
-## 🚀 Installation
+## 🚀 Installation rapide
 
-Compatible avec shadcn/ui :
-
+Ajoutez d'abord les utilitaires :
 ```bash
+pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/lib/utils.json
+```
+
+Puis installez les composants :
+```bash
+# Composant CTA (bouton avec variants)
 pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/cta.json
+
+# Composant Picto (système d'icônes)
+pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/picto.json
 ```
 
 ## 📦 Utilisation
@@ -16,12 +24,21 @@ pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-r
 import { CTA } from '@/components/ui/cta'
 import { Picto } from '@/components/ui/picto'
 
-<CTA variant="primary">Mon bouton</CTA>
+// Bouton CTA avec variants
+<CTA variant="primary" size="lg">Mon bouton</CTA>
+<CTA variant="secondary" isLoading>Chargement...</CTA>
+
+// Système d'icônes
 <Picto name="heart" size="medium" />
+<Picto name="check" size="small" className="text-green-500" />
 ```
 
 ## 🔧 Composants disponibles
 
+### Utils
+**Utils :** `pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/lib/utils.json`
+
+### UI Components
 **CTA :** `pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/cta.json`
 
 **Picto :** `pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/picto.json`
@@ -40,7 +57,7 @@ import { Picto } from '@/components/ui/picto'
 <CTA size="lg">Large</CTA>
 
 <CTA href="/path">Lien</CTA>
-<CTA loading>Chargement...</CTA>
+<CTA isLoading>Chargement...</CTA>
 ```
 
 ## 🎯 Icônes Picto disponibles
@@ -48,16 +65,13 @@ import { Picto } from '@/components/ui/picto'
 ```tsx
 <Picto name="check" size="medium" />
 <Picto name="close" size="medium" />
-<Picto name="arrow-left" size="medium" />
-<Picto name="arrow-right" size="medium" />
 <Picto name="heart" size="medium" />
 <Picto name="star" size="medium" />
 <Picto name="user" size="medium" />
-<Picto name="settings" size="medium" />
-<Picto name="search" size="medium" />
 <Picto name="plus" size="medium" />
+<Picto name="error" size="medium" />
 
-// Tailles disponibles: 'small' | 'medium' | 'large' | 'selecttabs'
+// Tailles disponibles: 'small' | 'medium' | 'large'
 ```
 
 ## 🏗️ Développement
