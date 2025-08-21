@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "hdscard",
+  "type": "registry:ui",
+  "description": "A versatile Card component with multiple variants",
+  "registryDependencies": [
+    "utils",
+    "cta",
+    "picto"
+  ],
+  "files": [
+    {
+      "path": "ui/hdscard.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}
