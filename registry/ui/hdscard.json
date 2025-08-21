@@ -4,9 +4,7 @@
   "type": "registry:ui",
   "description": "A versatile Card component with multiple variants",
   "registryDependencies": [
-    "utils",
-    "cta",
-    "picto"
+    "utils"
   ],
   "files": [
     {

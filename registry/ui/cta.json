@@ -7,8 +7,7 @@
     "class-variance-authority"
   ],
   "registryDependencies": [
-    "utils",
-    "picto"
+    "utils"
   ],
   "files": [
     {
