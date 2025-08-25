@@ -16,6 +16,9 @@ pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-r
 
 # Composant Picto (système d'icônes)
 pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/picto.json
+
+# Composant HDSCard (Container)
+pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/hdscard.json
 ```
 
 ## 📦 Utilisation

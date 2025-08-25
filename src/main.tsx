@@ -4,8 +4,76 @@ import './index.css'
 import CTA from './components/CTA/CTA'
 import {Picto} from './components/Picto/Picto'
 import {HDSCard} from "@/components/HDSCard/HDSCard";
+import {HDSCarousel} from "@/components/HDSCarousel/HDSCarousel";
 
 function App() {
+
+    const carouselItems = [
+        {
+            type: 'image' as const,
+            src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
+            alt: 'Mountain landscape',
+            title: 'Discover Nature',
+            subtitle: 'Explore breathtaking mountain landscapes',
+            ctaText: 'Start Adventure',
+            ctaEndIcon: '→'
+        },
+        {
+            type: 'video' as const,
+            src: 'Mur d\'images.mp4',
+            title: 'XAVIER PINCEMIN',
+            titleImg: 'otacos.png',
+            titleImgClassName: 'md:max-w-40 max-w-20',
+            alt: 'Sample video',
+            ctaText: 'Découvrir',
+            autoplay: true,
+            muted: true,
+            loop: true
+        },
+        {
+            type: 'image' as const,
+            src: 'https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&h=400&fit=crop',
+            alt: 'Peaceful lake',
+            title: 'Tranquil Waters',
+            subtitle: 'Find peace in serene lake views',
+            ctaText: 'Explore',
+            ctaEndIcon: '→'
+        },
+        {
+            type: 'image' as const,
+            src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&h=400&fit=crop',
+            alt: 'Technology background',
+            title: 'Innovation Hub',
+            subtitle: 'Leading the future of technology',
+            ctaText: 'Learn More',
+            ctaEndIcon: '→'
+        }
+    ];
+
+    const bannerSliderItems = [
+        {
+            type: 'image' as const,
+            src: 'https://images.unsplash.com/photo-1516321165247-4aa89a48be28?w=1200&h=600&fit=crop',
+            alt: 'Hero banner',
+            title: 'Welcome to Our Platform',
+            subtitle: 'Experience the next generation of digital solutions',
+            ctaText: 'Get Started',
+            ctaEndIcon: '→'
+        },
+        {
+            type: 'video' as const,
+            src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
+            poster: 'https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&h=600&fit=crop',
+            alt: 'Demo video',
+            title: 'See It In Action',
+            subtitle: 'Watch how our platform transforms your workflow',
+            ctaText: 'Watch Demo',
+            ctaStartIcon: '▶',
+            autoplay: false,
+            muted: true,
+            loop: true
+        }
+    ];
 
     const bentoCard = {
         title: "Layout Right Large",
@@ -30,11 +98,26 @@ function App() {
         ]
     }
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4">
+        <div className="min-h-screen bg-gray-50  ">
+            <HDSCarousel
+                items={carouselItems}
+                autoplay={{ delay: 8000, disableOnInteraction: false }}
+            />
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
                     HDS React UI Components
                 </h1>
+
+                {/* Section HDSCarousel */}
+                <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
+                    <h2 className="text-xl font-semibold mb-4">HDSCarousel Component</h2>
+                    
+                    <div className="space-y-8">
+                        <div>
+                            <h3 className="text-sm font-medium text-gray-700 mb-4">Default Carousel (Mixed Media)</h3>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="space-y-8">
                     {/* Section CTA */}
