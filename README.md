@@ -19,6 +19,12 @@ pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-r
 
 # Composant HDSCard (Container)
 pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/hdscard.json
+
+# Composant HDSCarousel (Slider)
+pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/hdscarousel.json
+
+# Composant Selector (Sélecteur)
+pnpm dlx shadcn@latest add https://raw.githubusercontent.com/heavenconseil/hds-react-ui-packages/main/registry/ui/selector.json
 ```
 
 ## 📦 Utilisation
