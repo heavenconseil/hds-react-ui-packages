@@ -1,0 +1,19 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "selector",
+  "type": "registry:ui",
+  "description": "A versatile Selector component with multiple variants and display modes",
+  "dependencies": [],
+  "registryDependencies": [
+    "select",
+    "tooltip",
+    "cta",
+    "picto"
+  ],
+  "files": [
+    {
+      "path": "ui/selector.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

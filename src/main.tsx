@@ -1,17 +1,35 @@
-import React from 'react'
+import React, {useState} from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import CTA from './components/CTA/CTA'
 import {Picto} from './components/Picto/Picto'
 import {HDSCard} from "@/components/HDSCard/HDSCard";
 import {HDSCarousel} from "@/components/HDSCarousel/HDSCarousel";
+import Selector from "@/components/Selector/Selector";
 
 function App() {
+
+    const [selectedValue, setSelectedValue] = useState<string>('')
+
+    // Créer une fonction d'enveloppe qui prend une valeur de type string
+    const handleChange = (value: string) => {
+        setSelectedValue(value)
+    }
+
+    const options = [
+        { value: 'option1', label: 'Option 1', icon: 'sun' },
+        { value: 'option2', label: 'mode nuit noir ' },
+        { value: 'option3', label: 'Option 3', icon: 'system', disabled: true },
+        { value: 'option4', label: 'Option 4', icon: 'moon' },
+        { value: 'option5', label: 'Option 5', icon: 'sun' },
+    ]
 
     const carouselItems = [
         {
             type: 'image' as const,
             src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=400&fit=crop',
+            image: 'otacosright.png',
+            imageClassName: 'w-50',
             alt: 'Mountain landscape',
             title: 'Discover Nature',
             subtitle: 'Explore breathtaking mountain landscapes',
@@ -98,26 +116,11 @@ function App() {
         ]
     }
     return (
-        <div className="min-h-screen bg-gray-50  ">
-            <HDSCarousel
-                items={carouselItems}
-                autoplay={{ delay: 8000, disableOnInteraction: false }}
-            />
+        <div className="min-h-screen bg-gray-50">
             <div className="max-w-4xl mx-auto">
                 <h1 className="text-3xl font-bold text-gray-900 mb-8 text-center">
                     HDS React UI Components
                 </h1>
-
-                {/* Section HDSCarousel */}
-                <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
-                    <h2 className="text-xl font-semibold mb-4">HDSCarousel Component</h2>
-                    
-                    <div className="space-y-8">
-                        <div>
-                            <h3 className="text-sm font-medium text-gray-700 mb-4">Default Carousel (Mixed Media)</h3>
-                        </div>
-                    </div>
-                </div>
 
                 <div className="space-y-8">
                     {/* Section CTA */}
@@ -449,6 +452,63 @@ function App() {
                                 <CTA variant="ghost" size="small" startIcon="home">
                                     Home
                                 </CTA>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Section HDSCarousel */}
+                    <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
+                        <h2 className="text-xl font-semibold mb-4">HDSCarousel Component</h2>
+
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-sm font-medium text-gray-700 mb-4">Default Carousel (Mixed Media)</h3>
+                            </div>
+                            <div>
+                                <HDSCarousel
+                                    items={carouselItems}
+                                    autoplay={{ delay: 6000 }}
+                                    height="40vh"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-white rounded-lg p-6 shadow-sm mb-8">
+                        <h2 className="text-xl font-semibold mb-4">Selector Component</h2>
+
+                        <div className="space-y-8">
+                            <div>
+                                <h3 className="text-sm font-medium text-gray-700 mb-4">Default Carousel (Mixed Media)</h3>
+                            </div>
+                            <div>
+                                <Selector
+                                    options={options}
+                                    onChange={handleChange}
+                                    value={selectedValue}
+                                    placeholder="Select an option"
+                                    label="options"
+                                />
+                                <Selector
+                                    className="!text-black"
+                                    ctaVariant="outline"
+                                    options={options}
+                                    value={selectedValue}
+                                    onChange={handleChange}
+                                    placeholder="Select an option"
+                                    label="options"
+                                    variant="radio"
+                                />
+                                <Selector
+                                    className="text-black"
+                                    ctaVariant="outline"
+                                    options={options}
+                                    value={selectedValue}
+                                    onChange={handleChange}
+                                    placeholder="Select an option"
+                                    label="options"
+                                    variant="radio"
+                                    displayMode="icon"
+                                />
                             </div>
                         </div>
                     </div>
