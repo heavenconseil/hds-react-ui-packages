@@ -7,7 +7,6 @@
   "registryDependencies": [
     "select",
     "tooltip",
-    "cta",
     "picto"
   ],
   "files": [
