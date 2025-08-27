@@ -6,9 +6,7 @@
   "dependencies": [
     "swiper/react"
   ],
-  "registryDependencies": [
-    "cta"
-  ],
+  "registryDependencies": [],
   "files": [
     {
       "path": "ui/hdscarousel.tsx",
