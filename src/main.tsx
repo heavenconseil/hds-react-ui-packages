@@ -478,9 +478,6 @@ function App() {
 
                         <div className="space-y-8">
                             <div>
-                                <h3 className="text-sm font-medium text-gray-700 mb-4">Default Carousel (Mixed Media)</h3>
-                            </div>
-                            <div>
                                 <Selector
                                     options={options}
                                     onChange={handleChange}
