@@ -6,8 +6,7 @@
   "dependencies": [],
   "registryDependencies": [
     "select",
-    "tooltip",
-    "picto"
+    "tooltip"
   ],
   "files": [
     {
