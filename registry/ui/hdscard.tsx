@@ -247,7 +247,6 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
         const ButtonsContent = () => {
             if (!primaryButtonText && !secondaryButtonText) return null;
             
-            // Si seulement le bouton primaire existe, le centrer
             const hasOnlyPrimaryButton = primaryButtonText && !secondaryButtonText;
             
             return (

@@ -137,3 +137,40 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Animation des bullets avec barre de progrès */
+.swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+    width: 60px !important; /* S'étend quand actif */
+    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Barre de progrès animée */
+.swiper-pagination-bullet-active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: white;
+    border-radius: inherit;
+    animation: progress-fill var(--swiper-autoplay-delay, 3000ms) linear;
+    transform-origin: left;
+    width: 0%;
+}
+
+@keyframes progress-fill {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+
