@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { forwardRef } from 'react';
-import { cn } from '@/utils';
-import CTA from "@/components/CTA/CTA";
+import { cn } from '@/lib/utils';
+import {CTA} from "@/components/ui/cta";
 
 export interface HDSCardProps {
     title?: string;
@@ -38,12 +38,12 @@ export interface HDSCardProps {
 }
 
 const HDSImage = ({
-    width,
-    height,
-    src,
-    alt,
-    className,
-}: {
+                      width,
+                      height,
+                      src,
+                      alt,
+                      className,
+                  }: {
     width: number;
     height: number;
     src: string;
@@ -160,7 +160,7 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
 
         const TitleContent = () => {
             if (!title && !subtitle) return null;
-            
+
             return (
                 <div className={cn(
                     'space-y-2',
@@ -175,7 +175,7 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
                             {title}
                         </h3>
                     )}
-                    
+
                     {subtitle && (
                         <p className={cn(
                             'opacity-80',
@@ -191,7 +191,7 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
 
         const CustomContentArea = () => {
             if (!customContent) return null;
-            
+
             return (
                 <div className={cn(
                     'mt-4',
@@ -205,7 +205,7 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
         const ImageContent = () => {
             const imageElement = image || backgroundImage;
             if (!imageElement && titlePosition !== 'overlay') return null;
-            
+
             return (
                 <div className={cn(
                     'relative overflow-hidden',
@@ -214,21 +214,21 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
                     titlePosition === 'overlay' && 'absolute inset-0'
                 )}>
                     {image && titlePosition !== 'overlay' && (
-                        <HDSImage 
-                            width={variant === 'small' ? 200 : 400} 
-                            height={variant === 'small' ? 120 : 200} 
-                            src={image} 
+                        <HDSImage
+                            width={variant === 'small' ? 200 : 400}
+                            height={variant === 'small' ? 120 : 200}
+                            src={image}
                         />
                     )}
-                    
+
                     {/* Overlay for background image */}
                     {titlePosition === 'overlay' && backgroundImage && (
-                        <div 
-                            className="absolute inset-0 bg-black/40" 
+                        <div
+                            className="absolute inset-0 bg-black/40"
                             style={{ opacity: overlayOpacity }}
                         />
                     )}
-                    
+
                     {/* Badge overlay */}
                     {badgeLabel && (
                         <div className="absolute top-3 left-3 z-10">
@@ -246,9 +246,10 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
 
         const ButtonsContent = () => {
             if (!primaryButtonText && !secondaryButtonText) return null;
-            
+
+            // Si seulement le bouton primaire existe, le centrer
             const hasOnlyPrimaryButton = primaryButtonText && !secondaryButtonText;
-            
+
             return (
                 <div className={cn(
                     'flex gap-2 mt-4',
@@ -337,12 +338,12 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
 
             const layoutClasses = getBentoLayout();
 
-            const BentoImage = ({ image, index, className }: { 
-                image: { src: string; alt?: string }; 
-                index: number; 
-                className?: string 
+            const BentoImage = ({ image, index, className }: {
+                image: { src: string; alt?: string };
+                index: number;
+                className?: string
             }) => (
-                <div 
+                <div
                     className={cn('relative overflow-hidden rounded-lg cursor-pointer group', className)}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -362,37 +363,37 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
                 <div className="relative overflow-hidden" style={{ height: imageHeight }}>
                     {variantConfig.bentoLayout === 'top-large' ? (
                         <div className={layoutClasses.container}>
-                            <BentoImage 
-                                image={images[0]} 
-                                index={0} 
+                            <BentoImage
+                                image={images[0]}
+                                index={0}
                                 className={layoutClasses.image0}
                             />
                             <div className={layoutClasses.image1}>
-                                <BentoImage 
-                                    image={images[1]} 
-                                    index={1} 
+                                <BentoImage
+                                    image={images[1]}
+                                    index={1}
                                 />
-                                <BentoImage 
-                                    image={images[2]} 
-                                    index={2} 
+                                <BentoImage
+                                    image={images[2]}
+                                    index={2}
                                 />
                             </div>
                         </div>
                     ) : (
                         <div className={layoutClasses.container}>
-                            <BentoImage 
-                                image={images[0]} 
-                                index={0} 
+                            <BentoImage
+                                image={images[0]}
+                                index={0}
                                 className={layoutClasses.image0}
                             />
-                            <BentoImage 
-                                image={images[1]} 
-                                index={1} 
+                            <BentoImage
+                                image={images[1]}
+                                index={1}
                                 className={layoutClasses.image1}
                             />
-                            <BentoImage 
-                                image={images[2]} 
-                                index={2} 
+                            <BentoImage
+                                image={images[2]}
+                                index={2}
                                 className={layoutClasses.image2}
                             />
                         </div>
@@ -426,16 +427,16 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
             >
                 {/* Title above image */}
                 {titlePosition === 'above' && !hideDefaultContent && <TitleContent />}
-                
+
                 {/* Image content - Bento or regular */}
                 {!hideDefaultContent && (isBentoVariant ? <BentoContent /> : <ImageContent />)}
-                
+
                 {/* Custom content area */}
                 <CustomContentArea />
-                
+
                 {/* Title below image or overlay */}
                 {(titlePosition === 'below' || titlePosition === 'overlay') && !hideDefaultContent && <TitleContent />}
-                
+
                 {/* Children content - inserted between title and buttons */}
                 {children && (
                     <div className={cn(
@@ -445,7 +446,7 @@ const HDSCard = forwardRef<HTMLDivElement, HDSCardProps>(
                         {children}
                     </div>
                 )}
-                
+
                 {/* Action buttons */}
                 {!hideDefaultContent && (primaryButtonText || secondaryButtonText) && <ButtonsContent />}
             </div>
