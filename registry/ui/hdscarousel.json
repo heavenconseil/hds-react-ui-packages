@@ -4,7 +4,7 @@
   "type": "registry:ui",
   "description": "A versatile Carousel component with image and videos handling",
   "dependencies": [
-    "swiper/react"
+    "swiper"
   ],
   "registryDependencies": [],
   "files": [
